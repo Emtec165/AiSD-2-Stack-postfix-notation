@@ -1,4 +1,4 @@
-﻿class Stack:
+﻿'''class Stack:
     #variable
     __stack = []
 
@@ -33,4 +33,53 @@ print(stos.pop())
 print(stos.peek())
 print(stos.peek())
 print(stos.isEmpty())
-print(stos.size())
+print(stos.size(), "\n\n")'''
+
+def plus_minus():
+    while operation:
+        if(operation[-1] is not "("):
+            print(operation.pop(), end = "")
+        else:
+            break;
+    operation.append(i)
+def mnozenie_dzielenie():
+    while operation:
+        if (operation[-1] is "*"):
+            print(operation.pop(), end = "")
+        elif (operation[-1] is "/"):
+            print(operation.pop(), end = "")
+        else:
+            break;
+    operation.append(i)
+
+operation = []
+#intput = ["(", "a", "+", "b", ")", "*", "c"]
+intput = ["a", "*", "b", "+", "c", "/", "(", "(", "d", "-", "e", ")", "*", "f", ")"]
+#intput = ['a', '*', '(', 'b', '+', 'c', ')', '-', 'd', '/', '(', 'e', '-', 'f', ')']
+
+for i in intput:
+    if (i is "("):#DODAWANIE ( DO STOSU
+        operation.append(i)
+
+    elif (i is ")"):#WYPISYWANIE OPERACJI ZE STOSU DO ZNAKU (. DODATKOWO ZNAK ( JEST ANIHILOWANY
+        while (operation[-1] is not "("):
+            print(operation.pop(), end="")
+        operation.pop()
+
+    elif (i is "+"):
+        plus_minus()
+
+    elif (i is "-"):
+        plus_minus()
+
+    elif (i is "*"):
+        mnozenie_dzielenie()
+
+    elif (i is "/"):
+        mnozenie_dzielenie()
+
+    else:# WYPISANIE LITEREK NA EKRAN
+        print(i,end="")
+
+while operation:# NA SAMYM KONCU WYPISUJE TO CO ZOSTALO W STOSIE
+    print(operation.pop(), end="")
