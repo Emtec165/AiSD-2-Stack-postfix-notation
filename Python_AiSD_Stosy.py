@@ -33,7 +33,9 @@ print(stos.pop())
 print(stos.peek())
 print(stos.peek())
 print(stos.isEmpty())
-print(stos.size(), "\n\n")'''
+print(stos.size(), "\n\n")
+
+#-------------------------------------------------INFIX TO POSTFIX---------------------------------------------------------------
 
 def plus_minus():
     while operation:
@@ -82,4 +84,38 @@ for i in intput:
         print(i,end="")
 
 while operation:# NA SAMYM KONCU WYPISUJE TO CO ZOSTALO W STOSIE
-    print(operation.pop(), end="")
+    print(operation.pop(), end="")'''
+
+#--------------------------------------------------------SOLVING EQUATIONS WRITTEN IN POSTFIX--------------------------------------
+
+#equation = [6,5,15,"*","+"]
+equation = [6, 5, "-", 8, 4, "-", "*", 4, 3, "-", "/"]
+numbers = []
+zmienna1 = 0
+zmienna2 = 0
+
+for i in equation:
+    if (i is "+"):
+        zmienna2 = numbers.pop()
+        zmienna1 = numbers.pop()
+        numbers.append(zmienna1 + zmienna2)
+
+    elif (i is "-"):
+        zmienna2 = numbers.pop()
+        zmienna1 = numbers.pop()
+        numbers.append(zmienna1 - zmienna2)
+
+    elif (i is "*"):
+        zmienna2 = numbers.pop()
+        zmienna1 = numbers.pop()
+        numbers.append(zmienna1 * zmienna2)
+
+    elif (i is "/"):
+        zmienna2 = numbers.pop()
+        zmienna1 = numbers.pop()
+        numbers.append(zmienna1 / zmienna2)
+
+    else:
+        numbers.append(i)
+
+print(numbers)
